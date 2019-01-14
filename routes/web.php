@@ -11,8 +11,8 @@
 |
  */
 
-Route::get('/anas/test', function () {
-    return view('welcomex');
+Route::get('/anas', function () {
+    return view('test');
 });
 
 Route::group(['prefix' => 'admin'], function () {
