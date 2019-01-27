@@ -1,98 +1,97 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+    <title>Laravel</title>
+    <meta name="keyword" content="">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <style>
+        .slide-enter {
+            transform: translateY(40px);
+            /* transition: transform 10s; */
+        }
+
+
+        .slide-enter-active {
+            animation: slide-in 1s ease-in-out forwards;
+            /* transition: opacity 1s; */
+            /* opacity: 1; */
+        }
+
+        .slide-leave {}
+
+        .slide-leave-active {
+            animation: slide-out 1s ease-out forwards;
+        }
+
+        @keyframes slide-out {
+            from {
+                /* transform: translateY(0); */
+                opacity: 1;
             }
-
-            .full-height {
-                height: 100vh;
+            to {
+                opacity: 0;
+                /* transform: translateY(40px); */
             }
+        }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
+        @keyframes slide-in {
+            from {
+                opacity: 0;
+                /* transform: translateY(40px); */
             }
-
-            .position-ref {
-                position: relative;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
+        }
+    </style>
+</head>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+<body>
+    <div id="app">
+        <header class="bg-dark">
+            <nav class="navbar container navbar-expand-lg navbar-dark ">
+                <router-link class="navbar-brand" :to="{name:'acceuil'}">Anas</router-link>
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                    aria-expanded="false" aria-label="Toggle navigation"></button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    {{-- {{ dd(menu('menu_front')) }} --}}
+                    <front-menu></front-menu>
                 </div>
-            @endif
+            </nav>
+        </header>
+        <main role="main" class="my-5">
+            <transition name="slide" mode="out-in">
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                <router-view></router-view>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+            </transition>
+
+        </main>
+        <footer class="footer bg-dark">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-4">anas</div>
+                    <div class="col-md-4">anas</div>
+                    <div class="col-md-4">anas</div>
+                    <div class="col-md-4">anass</div>
                 </div>
             </div>
-        </div>
-    </body>
+        </footer>
+    </div>
+    <script src="{{asset('js/app.js')}}"></script>
+
+</body>
+
 </html>

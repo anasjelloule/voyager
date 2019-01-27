@@ -11,10 +11,15 @@
 |
  */
 
-Route::get('/anas/test', function () {
-    return view('welcomex');
+Route::get('/', function () {
+    // return bcrypt('123123');
+    return view('welcome');
 });
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/{path}', function () {
+    return view('welcome');
+})->where('path', '.*');
