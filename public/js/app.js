@@ -1836,6 +1836,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "front-menu",
   data: function data() {
@@ -37187,7 +37192,11 @@ var render = function() {
         "router-link",
         {
           staticClass: "nav-item",
-          attrs: { tag: "li", "active-class": "active", to: { name: "about" } }
+          attrs: {
+            tag: "li",
+            "active-class": "active",
+            to: { name: "about", hash: "#vision" }
+          }
         },
         [_c("a", { staticClass: "nav-link" }, [_vm._v("About")])]
       ),
@@ -52557,6 +52566,23 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
+  scrollBehavior: function scrollBehavior(to, form, savedPosition) {
+    if (to.hash) {
+      console.log('hash', to);
+      return {
+        selector: to.hash
+      };
+    }
+
+    if (savedPosition) {
+      return savedPosition;
+    }
+
+    return {
+      x: 0,
+      y: 0
+    };
+  },
   routes: _routes__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 var store = new vuex__WEBPACK_IMPORTED_MODULE_3__["default"].Store(_stores__WEBPACK_IMPORTED_MODULE_4__["default"]);

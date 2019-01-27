@@ -19,6 +19,17 @@ Vue.use(Vuex)
 
 const router = new VueRouter({
     mode: 'history',
+    scrollBehavior(to, form, savedPosition) {
+
+        if (to.hash) {
+            console.log('hash', to);
+            return { selector: to.hash };
+        }
+        if (savedPosition) {
+            return savedPosition
+        }
+        return { x: 0, y: 0 }
+    },
     routes
 })
 

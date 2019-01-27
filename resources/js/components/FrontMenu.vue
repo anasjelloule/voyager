@@ -27,7 +27,12 @@
         <router-link class="dropdown-item" active-class="active" :to="{name:'about',}">About</router-link>
       </div>
     </li>
-    <router-link class="nav-item" tag="li" active-class="active" :to="{name:'about',}">
+    <router-link
+      class="nav-item"
+      tag="li"
+      active-class="active"
+      :to="{name:'about',hash:'#vision'}"
+    >
       <a class="nav-link">About</a>
     </router-link>
     <router-link class="nav-item" tag="li" active-class="active" :to="{name:'anas',}">
